@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  module.exports = {
+export default {
       model: {
           prop: 'modelValue',
           event: 'change',

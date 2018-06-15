@@ -1,25 +1,27 @@
 <template>
-  <div class="lni-c-radio">
-      <input type="radio"
-             :id="id" 
-             :name="name"
-             :checked="shouldBeChecked" 
-             :value="value" 
-             @change="updateInput">
-      <label :for="id">{{ label }}</label>
-  </div>  
+    <div class="lni-c-radio">
+        <input
+            :value="value"
+            :id="id"
+            :name="name"
+            :checked="shouldBeChecked"
+            type="radio"
+            @change="updateInput"
+        >
+        <label :for="id">{{ label }}</label>
+    </div>
 </template>
 
 <script>
 export default {
-     model: {
+    model: {
         prop: 'modelValue',
         event: 'change',
     },
-    props:  {
+    props: {
         name: {
             type: String,
-            required: false,
+            required: true,
         },
         id: {
             type: String,
@@ -28,9 +30,11 @@ export default {
         value: {
             type: String,
             required: false,
+            default: null,
         },
         modelValue: {
-            default: "",
+            type: String,
+            default: '',
         },
         label: {
             type: String,
@@ -41,17 +45,16 @@ export default {
             required: false,
             default: false,
         },
-
     },
     computed: {
         shouldBeChecked() {
-            return this.modelValue == this.value;
-        }
+            return this.modelValue === this.value;
+        },
     },
     methods: {
         updateInput() {
             this.$emit('change', this.value);
-        }
-    }
-  }
+        },
+    },
+};
 </script>

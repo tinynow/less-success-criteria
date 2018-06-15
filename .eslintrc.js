@@ -9,8 +9,7 @@ module.exports = {
     browser: true,
   },
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base'],
+  extends: ['plugin:vue/recommended', 'airbnb-base'],
   // required to lint *.vue files
   plugins: [
     'vue'
@@ -25,6 +24,17 @@ module.exports = {
   },
   // add your custom rules here
   rules: {
+    "indent": ["error", 4],
+    "max-len": ["off", { "ignoreTemplateLiterals": true, "ignoreStrings": true }],
+
+    "vue/html-indent": ["error", 4, {
+        "attribute": 1,
+        "closeBracket": 0,
+        "alignAttributesVertically": true,
+        "ignores": []
+    }],
+      
+
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       js: 'never',
