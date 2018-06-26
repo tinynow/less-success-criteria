@@ -6,9 +6,9 @@
 
 <script>
 export default {
-    name: 'App',
+    name: 'mk-app',
 };
 </script>
-<style lang="css">
+<style lang="scss">
 @import './styles/index.scss';
 </style>

@@ -1,0 +1,75 @@
+/**
+* 1. Prevent font size adjustments after orientation changes in IE and iOS.
+* 2. Create a more logical box-sizing model, allow children to inherit
+*/
+html {
+    -ms-text-size-adjust: 100%; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 1 */
+    box-sizing: border-box; /* 2 */
+}
+*, *:before, *:after {
+    box-sizing: inherit; /* 2 */
+}
+
+
+/**
+* 1. Remove default margin
+* 2. Prevent inconsistent interpretation of default `normal` line-height
+*/
+body {
+    margin: 0; /* 1 */
+    line-height: 1; /* 2 */
+}
+
+/* Remove default margins */
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+main,
+figcaption,
+figure {
+    display: block;
+}
+
+strong {
+    font-weight: bold;
+}
+a,
+button {
+    color: inherit;
+    transition: .3s;
+}
+a {
+    text-decoration: none;
+}
+button {
+    overflow: visible;
+    border: 0;
+    font: inherit;
+    -webkit-font-smoothing: inherit;
+    letter-spacing: inherit;
+    background: none;
+    cursor: pointer;
+}
+::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+:focus {
+    outline: 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}

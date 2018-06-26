@@ -10,7 +10,7 @@
 */
 
 export default {
-    name: 'MkFetcher',
+    name: 'mk-fetcher',
 
     props: {
         endpoint: {
@@ -63,6 +63,7 @@ export default {
                 .catch(() => {
                     // TODO: research best way to handle fetch errors
                     // gonna be up in then and here in catch
+                    // eslint-disable-next-line no-console
                     console.warn(
                         "Couldn't fetch data (and developer couldn't bother to provide a better error message).",
                     );

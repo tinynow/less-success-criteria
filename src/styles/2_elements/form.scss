@@ -1,0 +1,23 @@
+/* These are the most basic styles for forms. Usually use component classes in addition */
+
+/**
+* Fieldset
+* Resets default styles
+*/
+
+fieldset {
+    border-width: 0;
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    legend {
+        display: table;
+        float: left; //keeps legend within border
+        width: 100%;
+        padding: $space 0 0 0;
+        font-weight: bold;
+    }
+    legend+* {
+        clear: both; //element after legend clears the float
+    }
+}

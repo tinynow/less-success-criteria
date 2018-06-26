@@ -4,32 +4,38 @@ export default [
         question: 'Is there video or audio on the page?',
         options: [
             {
-                id: 1,
+                value: true,
                 label: 'Yes',
-                enable: ['1.2.1', '1.2.2', '1.2.3', '1.2.4', '1.2.5', '1.2.6', '1.2.7', '1.2.8', '1.2.9', '1.4.2', '1.4.7'],
             },
             {
-                id: 2,
+                value: false,
                 label: 'No',
-                disable: ['1.2.1', '1.2.2', '1.2.3', '1.2.4', '1.2.5', '1.2.6', '1.2.7', '1.2.8', '1.2.9', '1.4.2', '1.4.7'],
             },
         ],
+        filter: {
+            name: 'No video or audio',
+            on: false,
+            criteria: ['1.2.1', '1.2.2', '1.2.3', '1.2.4', '1.2.5', '1.2.6', '1.2.7', '1.2.8', '1.2.9', '1.4.2', '1.4.7'],
+        },
     },
     {
         name: 'animations',
-        question: 'Are their animations or content that is revealed by user interaction on the page?',
+        question: 'Are there animations or content that is revealed by user interaction on the page?',
         options: [
             {
-                id: 1,
+                value: true,
                 label: 'Yes',
-                enable: ['2.2.2', '2.3.1'],
             },
             {
-                id: 2,
+                value: false,
                 label: 'No',
-                disable: ['2.2.2', '2.3.1'],
             },
         ],
+        filter: {
+            name: 'No animations',
+            on: false,
+            criteria: ['2.2.2', '2.3.1'],
+        },
     },
 
 ];

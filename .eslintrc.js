@@ -33,7 +33,8 @@ module.exports = {
         "alignAttributesVertically": true,
         "ignores": []
     }],
-      
+
+    "vue/name-property-casing": ["error", "kebab-case"],
 
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

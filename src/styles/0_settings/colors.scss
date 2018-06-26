@@ -1,0 +1,12 @@
+
+$background-brightness: 97%;
+$base-background-color: hsl(30, 90%, $background-brightness);
+$base-text-color: hsl(210, 60%, 18%);
+$minimum-contrast-gray: hsl(210, 30%, $background-brightness - 46%); //  WCAG 
+
+$subtle-gray: hsl(220, 20%, 90%);
+$subtle-green: hsl(124, 28%, 90%);
+
+$link-color: hsl(320, 95%, 20%);
+$focus-color: hsl(39, 100%, 64%);
+$selected-color: green;

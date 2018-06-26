@@ -1,5 +1,5 @@
 <template>
-    <div class="lni-c-radio">
+    <div class="mk-c-radio">
         <input
             :value="value"
             :id="id"
@@ -14,6 +14,7 @@
 
 <script>
 export default {
+    name: 'mk-radio',
     model: {
         prop: 'modelValue',
         event: 'change',
@@ -28,7 +29,7 @@ export default {
             required: true,
         },
         value: {
-            type: String,
+            type: [String, Boolean],
             required: false,
             default: null,
         },

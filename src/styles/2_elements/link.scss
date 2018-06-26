@@ -1,0 +1,10 @@
+a {
+    color: $link-color;
+    text-decoration: underline;
+    &:focus, &:active {
+        background-color: $focus-color;
+    }
+
+
+}
+

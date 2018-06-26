@@ -1,14 +1,14 @@
 <template>
     <fieldset class="lni-c-fieldset--control-group">
-        <legend>{{ condition.question }}</legend>
-        <lni-radio
-            v-for="option in condition.options"
-            :key="option.id"
-            :id="condition.name + option.id"
+        <legend>{{ question }}</legend>
+        <mk-radio
+            v-for="(option) in options"
+            :key="option.value"
+            :id="id + option.label"
             :label="option.label"
-            :name="condition.name"
-            :value="option.hasEffect ? 'true' : 'false'"
-            @change="updateAnswer(option)" />
+            :name="id"
+            :value="option.value"
+            @change="updateAnswer(option, question)" />
     </fieldset>
 </template>
 
@@ -16,12 +16,21 @@
 import Radio from './Radio';
 
 export default {
+    name: 'mk-question',
     components: {
         'mk-radio': Radio,
     },
     props: {
-        condition: {
-            type: Object,
+        question: {
+            type: String,
+            required: true,
+        },
+        options: {
+            type: Array,
+            required: true,
+        },
+        id: {
+            type: String,
             required: true,
         },
     },

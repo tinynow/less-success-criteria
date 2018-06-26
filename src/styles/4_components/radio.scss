@@ -1,0 +1,17 @@
+.mk-c-radio {
+  @include binary-control();
+  > label:before {
+    content: '\a0'; // simulates a non-breaking space: http://stackoverflow.com/questions/190396/adding-html-entities-using-css-content
+    background: white;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3), 0 0 0 1px $minimum-contrast-gray;
+  }
+
+  input:checked + label:before {
+    background: $selected-color;
+    box-shadow: inset 0 0 0 .125em #fff, 0 0 0 1px $minimum-contrast-gray;
+  }
+  input:focus + label:before {
+    box-shadow: inset 0 0 0 .125em #fff, 0 0 0 1px $minimum-contrast-gray, 0 0 0 3px $focus-color; 
+  }
+}
