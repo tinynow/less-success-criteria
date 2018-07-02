@@ -12,13 +12,14 @@ module.exports = {
   extends: ['plugin:vue/recommended', 'airbnb-base'],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'html',
   ],
   // check if imports actually resolve
   settings: {
     'import/resolver': {
       webpack: {
-        config: 'build/webpack.base.conf.js'
+        config: 'build/webpack.base.conf.js',
       }
     }
   },
@@ -26,6 +27,7 @@ module.exports = {
   rules: {
     "indent": ["error", 4],
     "max-len": ["off", { "ignoreTemplateLiterals": true, "ignoreStrings": true }],
+    "linebreak-style": ["off"],
 
     "vue/html-indent": ["error", 4, {
         "attribute": 1,
@@ -33,6 +35,7 @@ module.exports = {
         "alignAttributesVertically": true,
         "ignores": []
     }],
+    
 
     "vue/name-property-casing": ["error", "kebab-case"],
 

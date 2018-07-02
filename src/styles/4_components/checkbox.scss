@@ -11,10 +11,10 @@
         background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20fill%3D%22white%22%3E%3Cpath%20d%3D%22M6.41%200l-.69.72-2.78%202.78-.81-.78-.72-.72-1.41%201.41.72.72%201.5%201.5.69.72.72-.72%203.5-3.5.72-.72-1.44-1.41z%22%20transform%3D%22translate(0%201)%22%20%2F%3E%3C%2Fsvg%3E');
         background-repeat: norepeat;
         background-size: cover;
-        background-color: $selected-color;
+        background-color: $color-selected;
     }
     input:focus + label:before {
-        box-shadow: 0 0 0 2px $focus-color; 
+        box-shadow: 0 0 0 2px $color-focus; 
     }
     input[disabled] + label {
         text-decoration: line-through;

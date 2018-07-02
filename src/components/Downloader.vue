@@ -4,7 +4,6 @@
         :download="fileName"
         class="mk-download__link"
         @click="onClick">{{ text }}</a>
-
 </template>
 
 <script>
@@ -32,6 +31,7 @@ export default {
         return {
             mimeTypes: {
                 json: 'text/json;charset=utf8',
+                pdf: 'application/pdf;base64',
             },
         };
     },
@@ -53,7 +53,3 @@ export default {
     },
 };
 </script>
-
-<style>
-
-</style>

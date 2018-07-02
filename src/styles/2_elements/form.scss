@@ -15,7 +15,6 @@ fieldset {
         float: left; //keeps legend within border
         width: 100%;
         padding: $space 0 0 0;
-        font-weight: bold;
     }
     legend+* {
         clear: both; //element after legend clears the float

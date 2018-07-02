@@ -19,7 +19,6 @@ export default {
     name: 'mk-checkbox',
     description: `
     A checkbox that works differently if it is in a list of checkboxes.
-    
     `,
     model: {
         prop: 'modelValue',

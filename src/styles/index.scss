@@ -9,13 +9,23 @@
     
     '3_objects/binary-control',
     '3_objects/grid',
+    '3_objects/page-layout',
     
     '4_components/checkbox',
     '4_components/radio',
+    '4_components/progress',
     
     '5_utilities/visual',
+    '5_utilities/layout',
+    '5_utilities/spacing',
     '5_utilities/type';
 
-    body {
-        padding: 1em;
+    body > header {
+        padding: $space;
+    }
+    main {
+        padding: $space;
+    }
+    .-disabled h3 {
+        text-decoration: line-through;
     }

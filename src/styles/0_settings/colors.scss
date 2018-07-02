@@ -1,12 +1,121 @@
+$base-colors: ( 
+    bright-blue: hsl(204, 73%, 43%),
+    dark-blue: hsl(204, 90%, 23%),
+    paint-pot-red: hsl(8, 55%, 50%), 
+    slammin-green: rgb(67, 117, 9),
+    gray: hsl(35, 10%, 45%), 
+    yellow: hsl(48, 98%, 47%), 
+    white: hsl(41, 68%, 99%),
+);
 
-$background-brightness: 97%;
-$base-background-color: hsl(30, 90%, $background-brightness);
-$base-text-color: hsl(210, 60%, 18%);
-$minimum-contrast-gray: hsl(210, 30%, $background-brightness - 46%); //  WCAG 
+@function whiten($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
 
-$subtle-gray: hsl(220, 20%, 90%);
-$subtle-green: hsl(124, 28%, 90%);
+@function blacken($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
 
-$link-color: hsl(320, 95%, 20%);
-$focus-color: hsl(39, 100%, 64%);
-$selected-color: green;
+$white: map-get($base-colors, white);
+$bright-blue: map-get($base-colors, bright-blue);
+
+/* Grays */
+$gray-base: map-get($base-colors, gray);
+$grays: (
+    lighter-90: whiten($gray-base, 90),
+    lighter-75: whiten($gray-base, 75),
+    lighter-50: whiten($gray-base, 50),
+    lighter-25: whiten($gray-base, 25),
+    base: $gray-base,
+    darker-25: blacken($gray-base, 25),
+    darker-50: blacken($gray-base, 50),
+    darker-75: blacken($gray-base, 75),
+);
+
+/* Blues */
+/* Blues */
+$blue-base: map-get($base-colors, dark-blue);
+$blues: (
+   lighter-75: whiten($blue-base, 75),
+   lighter-50: whiten($blue-base, 50),
+   lighter-25: whiten($blue-base, 25),
+   base: map-get($base-colors, dark-blue),
+   darker-25: blacken($blue-base, 25),
+   darker-50: blacken($blue-base, 50),
+   darker-75: blacken($blue-base, 75),
+
+);
+
+$bright-blue-base: map-get($base-colors, bright-blue);
+$bright-blues: (
+    bright-blue-lighter-75: whiten($bright-blue-base, 75),
+    bright-blue-lighter-50: whiten($bright-blue-base, 50),
+    bright-blue-lighter-25: whiten($bright-blue-base, 25),
+    bright-blue-base: map-get($base-colors, bright-blue),
+    bright-blue-darker-25: blacken($bright-blue-base, 25),  
+    bright-blue-darker-50: blacken($bright-blue-base, 50),  
+    bright-blue-darker-75: blacken($bright-blue-base, 75),  
+);
+
+
+$red-base: map-get($base-colors, paint-pot-red );
+$reds: (
+    red-lighter-75: whiten($red-base, 75),
+    red-lighter-50: whiten($red-base, 50),
+    red-lighter-25: whiten($red-base, 25),
+    red-base: map-get($base-colors, red),
+    red-darker-25: blacken($red-base, 25),  
+    red-darker-50: blacken($red-base, 50),  
+    red-darker-75: blacken($red-base, 75),  
+);
+
+$green-base: map-get($base-colors, slammin-green);
+$greens: (
+    lighter-75: whiten($green-base, 75),
+    lighter-50: whiten($green-base, 50),
+    lighter-25: whiten($green-base, 25),
+    base: map-get($base-colors, slammin-green),
+    darker-25: blacken($green-base, 25),  
+    darker-50: blacken($green-base, 50),  
+    darker-75: blacken($green-base, 75),  
+);
+
+
+$yellow-base: map-get($base-colors, yellow);
+$yellows: (
+    yellow-lighter-75: whiten($yellow-base, 75),
+    yellow-lighter-50: whiten($yellow-base, 50),
+    yellow-lighter-25: whiten($yellow-base, 25),
+    yellow-base: map-get($base-colors, yellow),
+    yellow-darker-25: blacken($yellow-base, 25),  
+    yellow-darker-50: blacken($yellow-base, 50),  
+    yellow-darker-75: blacken($yellow-base, 75),  
+);
+$highlights: (
+    red-lighter-25: whiten($red-base, 25),
+    red: $red-base,
+    red-brighter-25: saturate($red-base, 50),
+    red-darker-25: blacken($red-base, 25),
+    green: $green-base,
+    green-brighter-10: saturate($green-base, 10),
+    green-darker-25: blacken($green-base, 25),
+    yellow-lighter-50: whiten($yellow-base, 50),
+    yellow-lighter-25: whiten($yellow-base, 25),
+    yellow: $yellow-base,
+    yellow-darker-25: blacken($yellow-base, 25),
+);
+
+$minimum-contrast-gray: map-get($grays, lighter-50);
+
+$color-link-base: map-get($base-colors, dark-blue);
+$color-link-base--hover: map-get($base-colors, paint-pot-red);
+$color-selected: map-get($greens, base);
+$color-focus: map-get($blues, lighter-25);
+$color-border--focus: map-get($base-colors, paint-pot-red);
+$color-background-button-base: map-get($grays, darker-25);
+$color-background-button-base--hover: map-get($grays, darker-50);
+
+$colorStacks: $base-colors, $grays, $blues, $greens, $bright-blues, $reds, $yellows;
+
+$color-background-base: $white;
+$color-text-base: map-get($grays, darker-75 )

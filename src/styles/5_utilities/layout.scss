@@ -1,0 +1,72 @@
+.mk-u-flex { display: flex; }
+.mk-u-inline-flex { display: inline-flex; }
+
+/* 1. Fix for Chrome 44 bug.
+ * https://code.google.com/p/chromium/issues/detail?id=506893 */
+.mk-u-flex-auto {
+  flex: 1 1 auto;
+  min-width: 0; /* 1 */
+  min-height: 0; /* 1 */
+}
+
+.mk-u-flex-none { flex: none; }
+
+.mk-u-flex-column           { flex-direction: column; }
+.mk-u-flex-row              { flex-direction: row; }
+.mk-u-flex-wrap             { flex-wrap: wrap; }
+.mk-u-flex-nowrap           { flex-wrap: nowrap; }
+.mk-u-flex-wrap-reverse     { flex-wrap: wrap-reverse; }
+.mk-u-flex-column-reverse   { flex-direction: column-reverse; }
+.mk-u-flex-row-reverse      { flex-direction: row-reverse; }
+
+.mk-u-items-start    { align-items: flex-start; }
+.mk-u-items-end      { align-items: flex-end; }
+.mk-u-items-center   { align-items: center; }
+.mk-u-items-baseline { align-items: baseline; }
+.mk-u-items-stretch  { align-items: stretch; }
+
+.mk-u-self-start    { align-self: flex-start; }
+.mk-u-self-end      { align-self: flex-end; }
+.mk-u-self-center   { align-self: center; }
+.mk-u-self-baseline { align-self: baseline; }
+.mk-u-self-stretch  { align-self: stretch; }
+
+.mk-u-justify-start   { justify-content: flex-start; }
+.mk-u-justify-end     { justify-content: flex-end; }
+.mk-u-justify-center  { justify-content: center; }
+.mk-u-justify-between { justify-content: space-between; }
+.mk-u-justify-around  { justify-content: space-around; }
+
+.mk-u-content-start   { align-content: flex-start; }
+.mk-u-content-end     { align-content: flex-end; }
+.mk-u-content-center  { align-content: center; }
+.mk-u-content-between { align-content: space-between; }
+.mk-u-content-around  { align-content: space-around; }
+.mk-u-content-stretch { align-content: stretch; }
+
+.mk-u-order-0 { order: 0; }
+.mk-u-order-1 { order: 1; }
+.mk-u-order-2 { order: 2; }
+.mk-u-order-3 { order: 3; }
+.mk-u-order-4 { order: 4; }
+.mk-u-order-5 { order: 5; }
+.mk-u-order-6 { order: 6; }
+.mk-u-order-7 { order: 7; }
+.mk-u-order-8 { order: 8; }
+
+.mk-u-order-last { order: 99999; }
+
+.mk-u-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+    grid-column-gap: $space;
+    grid-row-gap: $space/4;
+    // columns: 20em;
+    // break-inside: avoid;
+    // &.--lg {
+    //     columns: 35em;
+    // }
+    // &.--sm {
+    //     columns: 12em;
+    // }
+}

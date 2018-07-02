@@ -1,21 +1,15 @@
 <template>
-    <div>
-        <header>
-            <h1>
-                Less Success Criteria
-                <span class="mk-u-subtitle">Only test relevant WCAG criteria.</span>
-            </h1>
 
-        </header>
+
         <main>
-            <mk-fetcher
+            <!-- <mk-fetcher
                 v-if="!rawCriteria"
                 :endpoint="WCAGJSONURL"
                 method="get"
-                @response="handleResponse" />
+                @response="handleResponse" /> -->
 
 
-            <div class="lni-o-layout--aside-right inset">
+            <div class="mk-o-page--filtered-collection inset">
                 <section id="screening-questions">
                     <h2>Narrow the possibilities</h2>
                     <p> Answer questions to eliminate WCAG criteria that don't apply.</p>
@@ -29,11 +23,16 @@
                             @change="onAnswer($event, condition)" />
                     </form>
                 </section>
+                <section
+                    id="relevant-criteria"
+                    class="lni-o-layout__secondary mk-text-context--secondary"
+                    tabindex="0">
 
-                <mk-wcag-criteria :criteria="filteredCriteria" />
-
+                    <h2>Relevant success criteria</h2>
+                    <mk-wcag-criteria :criteria="filteredCriteria" />
+                </section>
                 <mk-downloader
-                    :data-string="JSON.stringify(filteredCriteria)"
+                    :data-string="JSON.stringify(emToolJson)"
                     file-type="json"
                     text="Download .json file for WCAG-EM Report Tool"
                 />
@@ -57,7 +56,6 @@
                 <li>Provide short descriptions of success criteria</li>
             </ul>
         </main>
-    </div>
 </template>
 
 <script>
@@ -67,6 +65,8 @@ import Conditions from '../assets/defaultConditions';
 import Criteria from './Criteria';
 import Downloader from './Downloader';
 import wcagCriteria from '../assets/successCriteria.json';
+import blankJson from '../assets/evaluation.json';
+import testsToCriteria from '../assets/testsToCriteria.json';
 
 const WCAGJSONURL = 'https://raw.githubusercontent.com/karlgroves/wcag-as-json/master/wcag.json';
 
@@ -87,6 +87,7 @@ export default {
             WCAGJSONURL,
             rawCriteria: wcagCriteria,
             appliedFilters: [],
+            blankJson: blankJson
         };
     },
     computed: {
@@ -108,6 +109,8 @@ export default {
             this.rawCriteria.forEach((principle) => {
                 principle.guidelines.forEach((guideline) => {
                     guideline.success_criteria.forEach((criterion) => {
+                        criterion['principle'] = principle.title;
+                        criterion['guideline'] = guideline.title;
                         successCriteria.push(criterion);
                     });
                 });
@@ -117,11 +120,25 @@ export default {
         filteredCriteria() {
             const filteredIds = this.filteredIds;
             return this.successCriteria.map((criteria) => {
-                // TODO: consider more deeply whether this linting rule is helping
+                // TODO: consider more deeply whether this linting rule
+                // is helping
                 // eslint-disable-next-line no-param-reassign
                 criteria.filtered = filteredIds.includes(criteria.ref_id);
                 return criteria;
             });
+        },
+        emToolJson() {
+            const template = this.blankJson;
+            const assertions = template['@graph'][0].auditResult;
+
+            this.filteredIds.forEach(id => {
+                let test = testsToCriteria[id];
+                let checked = assertions.find(assertion => assertion['test'] === test);
+                checked.result.outcome = 'earl:inapplicable';
+            });
+
+            template['@graph'][0].auditResult = assertions;
+            return template;
         },
     },
     methods: {

@@ -1,0 +1,48 @@
+/**
+*
+* Generate consistent font sizes and line heights
+* @require $space
+*
+*/
+
+/* Keep size of fonts consistent */
+$type-scale: (
+  -1: 0.875em, // small text
+  0: 1em,      // body text
+  1: 1.125em,  // large text, h4
+  2: 1.25em,   // h3
+  3: 1.5em,    // h2
+  4: 2em,      // h1
+);
+
+$wide-type-scale: (
+ -1: 0.875em, // small text
+  0: 1em,      // body text
+  1: 1.125em,  // large text, h4
+  2: 1.25em,   // h3
+  3: 1.5em,    // h2
+  4: 2em,      // h1
+);
+
+@function type-scale($level) {
+  @return map-get($type-scale, $level);
+};
+
+/* Vertical rhythm */
+$line-heights: (
+  -1: $space,
+  0: $space,
+  1: $space,
+  2: $space * 1.5,
+  3: $space * 1.5,
+  4: $space * 1.5
+);
+
+@function line-height($level) {
+  @return map-get($line-heights, $level);
+};
+
+@mixin type-setting($level: 0) {
+  font-size: type-scale($level);
+  line-height: line-height($level);
+};

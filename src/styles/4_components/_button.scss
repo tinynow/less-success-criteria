@@ -1,0 +1,107 @@
+
+$curvy: inset -1px -2px 3px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .2), inset 1px 2px 3px -1px transparentize(white, .3);
+$inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 3px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .2);
+
+.mk-c-button {
+    display: flex;
+    align-items: center;
+    margin-top: $space;
+    padding: .5em .75em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    transition: all .2s ease-in;
+    color: #eeffee;
+    background-color: map-get($blues, blue-lighter-25);
+    @include box-shadow(1);
+    
+    &:hover {
+        background-color: map-get($blues, blue-base);
+        @include box-shadow(3);
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+        background-color: map-get($highlights, bright-blue-base);
+        @include box-shadow(-1);
+    }
+    
+    > * {
+        margin: 0 $space/2;
+    }
+
+    &.-small {
+        @include type-setting(-1);
+    }
+    
+    &.-default {
+        background-color: map-get($blues, blue-base );
+        @include box-shadow(1, $curvy);
+        
+        &:hover {
+            background-color: map-get($highlights, blue-base);
+            @include box-shadow(3, inset -1px -4px 16px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .1));
+        }
+        &:active {
+            @include box-shadow(-1, $inset-curvy);
+            background-color: map-get($highlights, bright-blue-brighter-25 );
+        }
+    }
+
+    &.-primary {
+        background-color: map-get($highlights, green-brighter-10);
+        &:hover {
+            background-color: map-get($highlights, green-darker-25);
+        }
+        &:active {
+            background-color: map-get($greens, green-base);
+        }
+    }
+
+    &.-secondary {
+        background-color: map-get($grays, gray-base);
+        &:hover {
+            background-color: map-get($map: $grays, $key: gray-darker-25);
+        }
+        &:active {
+            background-color: map-get($map: $grays, $key: gray-darker-25);
+        }
+    }
+
+    &.-caution {
+        background-color: map-get($highlights, red);
+        &:hover {
+            background-color: map-get($reds, red-darker-25);
+        }
+    }
+
+    &.-curvy {
+        @include box-shadow(2, $curvy);
+        text-shadow: 1px 1px 4px transparentize($color: #000000, $amount: .5);
+        &:hover {
+            @include box-shadow(3, $curvy);
+        }
+        &:active {
+            @include box-shadow(-1, $inset-curvy);
+        }
+    }
+
+    &.-link-style {
+        padding: 0;
+        line-height: inherit;
+        color: map-get($base-colors, dark-blue);
+        background: none;
+        box-shadow: none;
+        @include link-style();
+    
+    }
+
+
+
+    & .mk-icon {
+        width: 1.25em;
+        height: 1.25em;
+    }
+}

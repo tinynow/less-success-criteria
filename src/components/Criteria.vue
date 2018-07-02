@@ -1,62 +1,63 @@
 <template>
+<div>
+    <div class="flex items-end">
 
-    <section
-        id="relevant-criteria"
-        class="lni-o-layout__secondary lni-c-text-context--secondary"
-        tabindex="0">
+        <span class="criteria-stats">{{ relevant.length || '' }} of {{ criteria.length || '' }}</span>
+        <button
+            v-if="disabled.length > 0" 
+            class="mk-c-button--bare"
+            @click="toggleVisible">Hide/Show Disabled</button>
+        <mk-progress
+            :value="relevant.length"
+            :max="criteria.length"
+        />
+    </div>
 
-        <h2>Select relevant success criteria</h2>
-
-        <div class="flex items-end">
-            <span class="criteria-stats">Showing {{ criteria.length - disabled.length || '' }} of {{ criteria.length || '' }} possible.</span>
-            <!-- <lni-toggle
-                id="hide-disabled"
-                label="Hide irrelevant"
-                @toggle="toggleVisible"/> -->
-        </div>
-
-        <ul class="mk-u-list-reset">
-            <li
-                v-for="item in criteria"
-                v-show="!hideDisabled || !item.disabled"
-                :key="item.ref_id"
-                class="criterion">
-                <mk-checkbox
-                    :id="'ref-' + item.ref_id"
-                    :label="item.title + ' ' + item.ref_id"
-                    :value="item.ref_id"
-                    :disabled="item.filtered"/>
-                <a
-                    :href="item.url"
-                    class="reference-link"
-                    target="_blank">Guideline</a>
-            </li>
-        </ul>
-    </section>
+    <ul class="mk-u-list-reset mk-u-columns --sm mk-u-type-size--0 mk-u-pt2">
+        <li
+            v-for="item in criteria"
+            v-show="!hideDisabled || !item.filtered"
+            :key="item.ref_id"
+            :class="item.filtered ? '-disabled' : ''"
+            class="mk-c-criterion mk-u-flex mk-u-items-start">
+            <span class="mk-c-criterion__title">{{ item.title }}</span>
+            <a
+                :href="item.url"
+                class="reference-link mk-u-mr0 mk-u-mlauto mk-u-nowrap"
+                target="_blank"
+                rel="noopener">{{ item.ref_id}}</a>
+        </li>
+    </ul>
+</div>      
 </template>
 
 <script>
 import Checkbox from './Checkbox';
+import Progress from './ProgressBar';
 
 export default {
     name: 'mk-wcag-criteria',
     components: {
         'mk-checkbox': Checkbox,
+        'mk-progress': Progress,
     },
     props: {
         criteria: {
             type: Array,
             required: true,
         },
-        hideDisabled: {
-            type: Boolean,
-            default: false,
-        },
+    },
+    data() {
+        return {
+            hideDisabled: true,
+        };
     },
     computed: {
         disabled() {
-            // return this.criteria;
             return this.criteria.filter(item => item.filtered);
+        },
+        relevant() {
+            return this.criteria.filter(item => !item.filtered);
         },
     },
     methods: {
@@ -64,6 +65,16 @@ export default {
             this.hideDisabled = !this.hideDisabled;
         },
     },
-
 };
 </script>
+<style lang="scss">
+.mk-c-criterion {
+
+}
+.mk-c-criterion__title {
+    .-disabled & {
+        text-decoration: line-through;
+        text-decoration-style: dotted; 
+    }
+}
+</style>
