@@ -58,7 +58,7 @@
 
 .mk-u-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16em, 31em));
     grid-column-gap: $space;
     grid-row-gap: $space/4;
     // columns: 20em;
@@ -69,4 +69,12 @@
     // &.--sm {
     //     columns: 12em;
     // }
+}
+.mk-u-full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }

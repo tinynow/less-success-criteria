@@ -5,14 +5,10 @@
 }
 
 .mk-o-page--filtered-collection {
-    @include min-screen-width(md) {
-        display: grid;
-        //grid-template-areas: controls, collection;
-        grid-template-columns: 2fr 1fr;
+    @include min-screen-width(sm) {
+        display: grid; //grid-template-areas: controls, collection;
+        grid-template-columns: minmax(12rem, 27rem) 1fr;
         grid-column-gap: $space*2;
-        
-        .__controls {
-    
-        }
+        .__controls {}
     }
 }

@@ -1,0 +1,13 @@
+@mixin link-style() {
+     background: none;
+     border: none;
+     color: $link-base;
+     text-decoration-line: underline;
+     &:visited {
+        color: $link-base;
+     }
+     &:hover {
+        color: $link-base--hover;
+     }
+
+ }

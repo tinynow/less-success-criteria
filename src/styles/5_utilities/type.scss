@@ -1,5 +1,6 @@
 .mk-u-subtitle {
     display: block;
+    font-family: $body-font;
     font-size: 1rem;
 }
 
@@ -7,4 +8,8 @@
     .mk-u-type-size--#{$i} {
         @include type-setting($i - 1);
     }
+}
+
+.mk-u-readable {
+    max-width: $max-reading-line-length;
 }

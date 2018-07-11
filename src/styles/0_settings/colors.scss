@@ -105,17 +105,20 @@ $highlights: (
     yellow-darker-25: blacken($yellow-base, 25),
 );
 
-$minimum-contrast-gray: map-get($grays, lighter-50);
-
-$color-link-base: map-get($base-colors, dark-blue);
-$color-link-base--hover: map-get($base-colors, paint-pot-red);
-$color-selected: map-get($greens, base);
-$color-focus: map-get($blues, lighter-25);
-$color-border--focus: map-get($base-colors, paint-pot-red);
-$color-background-button-base: map-get($grays, darker-25);
-$color-background-button-base--hover: map-get($grays, darker-50);
-
 $colorStacks: $base-colors, $grays, $blues, $greens, $bright-blues, $reds, $yellows;
 
-$color-background-base: $white;
-$color-text-base: map-get($grays, darker-75 )
+$minimum-contrast-gray: map-get($grays, lighter-50);
+
+$background-base: $white;
+$text-base: map-get($grays, darker-75);
+
+$link-base: map-get($base-colors, dark-blue);
+$link-base--hover: map-get($base-colors, paint-pot-red);
+
+$selected: map-get($greens, base);
+$focus: map-get($blues, lighter-25);
+$border--focus: map-get($base-colors, paint-pot-red);
+
+$background-button-base: map-get($grays, darker-25);
+$background-button-base--hover: map-get($grays, darker-50);
+

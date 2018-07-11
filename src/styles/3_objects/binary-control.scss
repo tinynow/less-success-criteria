@@ -3,21 +3,18 @@
 * 
 */
 
-
 @mixin binary-control($size: 1.125em) {
     display: inline-block;
-    padding: 4px 4px 8px 0px;
-    margin-left: calc(#{$size} + 8px); /* 1 */
-    text-indent: calc(-#{$size} - 8px); /* 1 */
-    line-height: 1.2;
-    
+    margin-left: calc(#{$size} + 8px);
+    /* 1 */
+    text-indent: calc(-#{$size} - 8px);
+    /* 1 */
     /* hide the real input */
     input {
         position: absolute;
         left: -999em;
         cursor: pointer;
     }
-
     label {
         display: block;
         cursor: pointer;

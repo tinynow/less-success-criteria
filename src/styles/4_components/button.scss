@@ -1,6 +1,6 @@
 
-$curvy: inset -1px -2px 3px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .2), inset 1px 2px 3px -1px transparentize(white, .3);
-$inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 3px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .2);
+$curvy: inset -1px -2px 3px -1px transparentize(map-get($grays, darker-50 ), .2), inset 1px 2px 3px -1px transparentize(white, .3);
+$inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 3px -1px transparentize(map-get($grays, darker-50 ), .2);
 
 .mk-c-button {
     display: flex;
@@ -12,7 +12,6 @@ $inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 
     border: none;
     border-radius: 4px;
     transition: all .2s ease-in;
-    color: #eeffee;
     background-color: map-get($blues, blue-lighter-25);
     @include box-shadow(1);
     
@@ -28,9 +27,6 @@ $inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 
         @include box-shadow(-1);
     }
     
-    > * {
-        margin: 0 $space/2;
-    }
 
     &.-small {
         @include type-setting(-1);
@@ -42,7 +38,7 @@ $inset-curvy: inset -1px -2px 3px -1px transparentize(white, .4), inset 1px 2px 
         
         &:hover {
             background-color: map-get($highlights, blue-base);
-            @include box-shadow(3, inset -1px -4px 16px -1px transparentize(map-get($map: $grays, $key: gray-darker-50 ), .1));
+            @include box-shadow(3, inset -1px -4px 16px -1px transparentize(map-get($map: $grays, $key: darker-50 ), .1));
         }
         &:active {
             @include box-shadow(-1, $inset-curvy);

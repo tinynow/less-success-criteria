@@ -1,8 +1,8 @@
 a {
-    color: $color-link-base;
+    color: $link-base;
     text-decoration: underline;
     &:focus, &:active {
-        background-color: $color-focus;
+        background-color: $focus;
         color: white;
     }
     &[target="_blank"]:after {
