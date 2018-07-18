@@ -1,4 +1,8 @@
 body {
     background-color: $background-base;
     color: $text-base;
+    > header {
+        padding-left: $space;
+    }
 }
+

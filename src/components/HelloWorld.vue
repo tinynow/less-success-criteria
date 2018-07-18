@@ -6,40 +6,45 @@
                 :endpoint="WCAGJSONURL"
                 method="get"
                 @response="handleResponse" /> -->
-        <div class="mk-intro mk-u-full-width">
-            <!-- TODO: provide short posts for those who don't know what the about words mean -->
-            <p class="mk-u-readable">Accessibility testing cannot be (fully) automated, so a manual process is always necessary. Certain answers to particular questions reduce the WCAG criteria you need to test. This application asks those questions and filters WCAG criteria accordingly. It is especially useful if you use the <a href="https://www.w3.org/WAI/eval/report-tool/#/">WCAG-EM Report Tool</a>.</p>
-        </div>
-        <mk-meter
-            class="mk-u-mt3"
-            id="percentFilteredCriteria"
-            :value="successCriteria.length - filteredIds.length"
-            :max="successCriteria.length"
-        >
-            <span slot-scope="slotProps" slot="label">Showing {{ slotProps.value }} of {{ slotProps.max }} criteria</span>
-        </mk-meter>
-        <div class="mk-o-page--filtered-collection inset mk-u-mt3">
- 
-            <section 
-                id="screening-questions"
-                class="mk-u-mb4">
-                <h2>1. Answer questions to eliminate WCAG criteria that don't apply.</h2>
-                <form>
-                    <mk-question v-for="condition in conditions" :id="condition.name" :question="condition.question" :options="condition.options" :key="conditions.indexOf(condition)" @change="onAnswer($event, condition)" />
-                </form>
-            </section>
-            <div>
-                <section id="relevant-criteria" class="lni-o-layout__secondary mk-text-context--secondary mk-u-mb4" tabindex="0">
-                    <h2>2. Review filtered criteria</h2>
-                    <mk-wcag-criteria :criteria="filteredCriteria" />
-                </section>
-                <section>
-                    <h2>3. Download .json file for your audit</h2>
-                    <mk-downloader v-if="filteredCriteria" :data-string="JSON.stringify(emToolJson)" file-type="json" text="Download .json file for WCAG-EM Report Tool" />
-                </section>
+        <section class="mk-explainer mk-u-flex mk-u-flex-column">
+            <mk-toggle
+                aria-label="Show instructions"
+                pressed-label="Show instructions"
+                unpressed-label="Hide instructions"
+                :isPressed="!showDocs"
+                @toggle="showDocs = !showDocs"
+                class="mk-u-mlauto mk-u-mr0 mk-u-"
+            />
+            <div v-if="showDocs" class="mk-intro mk-u-full-width">
+                <!-- TODO: provide short posts for those who don't know what the about words mean -->
+                <p class="mk-u-readable">Accessibility testing cannot be (fully) automated, so a manual process is always necessary.</p>
+                <p>This tool works in conjunction with the <a href="https://www.w3.org/WAI/eval/report-tool/#/">WCAG-EM Report Tool</a>. By answering questions you can reduce the number of criteria you need to test. You can save the results from this tool and <a href="https://www.w3.org/WAI/eval/report-tool/#/open">open them in the Report Tool</a>.</p>
+                
             </div>
+        </section>
+            <mk-meter class="mk-u-mt3" id="percentFilteredCriteria" :value="successCriteria.length - filteredIds.length" :max="successCriteria.length">
+                <span slot-scope="slotProps" slot="label">Showing {{ slotProps.value }} of {{ slotProps.max }} criteria</span>
+            </mk-meter>
+            <div class="mk-o-page--filtered-collection inset mk-u-mt3">
 
-        </div>
+                <section id="screening-questions" class="mk-u-mb4">
+                    <h2>1. Answer questions to eliminate WCAG criteria that don't apply.</h2>
+                    <form>
+                        <mk-question v-for="condition in conditions" :id="condition.name" :question="condition.question" :options="condition.options" :key="conditions.indexOf(condition)" @change="onAnswer($event, condition)" />
+                    </form>
+                </section>
+                <div>
+                    <section id="relevant-criteria" class="lni-o-layout__secondary mk-text-context--secondary mk-u-mb4" tabindex="0">
+                        <h2>2. Review filtered criteria</h2>
+                        <mk-wcag-criteria :criteria="filteredCriteria" />
+                    </section>
+                    <section>
+                        <h2>3. Download .json file for your audit</h2>
+                        <mk-downloader v-if="filteredCriteria" :data-string="JSON.stringify(emToolJson)" file-type="json" text="Download .json file for WCAG-EM Report Tool" />
+                    </section>
+                </div>
+
+            </div>
     </main>
 </template>
 
@@ -50,6 +55,7 @@ import Conditions from "../assets/defaultConditions";
 import Criteria from "./Criteria";
 import Downloader from "./Downloader";
 import Meter from './Meter';
+import Toggle from './Toggle';
 import wcagCriteria from "../assets/successCriteria.json";
 import blankJson from "../assets/evaluation.json";
 import testsToCriteria from "../assets/testsToCriteria.json";
@@ -66,6 +72,7 @@ export default {
         "mk-wcag-criteria": Criteria,
         "mk-downloader": Downloader,
         'mk-meter': Meter,
+        'mk-toggle': Toggle,
     },
     data() {
         return {
@@ -74,7 +81,8 @@ export default {
             WCAGJSONURL,
             rawCriteria: wcagCriteria,
             appliedFilters: [],
-            blankJson: blankJson
+            blankJson: blankJson,
+            showDocs: true,
         };
     },
     computed: {

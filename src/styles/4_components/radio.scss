@@ -1,5 +1,5 @@
 .mk-c-radio {
-    padding-right: $space/4;
+    padding-right: $space/2;
     @include binary-control();
     >label:before {
         content: '\a0'; // simulates a non-breaking space: http://stackoverflow.com/questions/190396/adding-html-entities-using-css-content

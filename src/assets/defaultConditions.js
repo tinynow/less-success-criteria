@@ -59,6 +59,7 @@ export default [
     {
         name: 'formElements',
         question: 'Are there any form elements on the page?',
+        description: 'WCAG criteria apply only to form elements.',
         options: [
             {
                 label: 'Yes',

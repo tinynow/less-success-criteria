@@ -1,11 +1,12 @@
 <template>
     <button 
-        class="mk-c-toggle mk-c-button" 
-        :aria-pressed="pressed"
-        aria-label="ariaLabel"
-        @click="onClick">
+        class="mk-c-toggle mk-c-button -link-style" 
+        :aria-pressed="String(pressed)"
+        :aria-label="ariaLabel"
+        @click="onClick"
+    >
         <slot name="before" />
-        <span class="visual-only">{{ pressed ? pressedLabel : unpressedLabel }}</span>
+        <span aria-hidden="true">{{ pressed ? pressedLabel : unpressedLabel }}</span>
         &nbsp;
         <slot name="after" />
     </button>
