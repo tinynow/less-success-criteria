@@ -1,14 +1,13 @@
 /* *
-* 1. When label wraps align left edge with right edge of control
+* For radios and checkboxes - the pseudo-checkbox hack
+* 1. Align left edge of wrapped text with right edge of control
 * 
 */
 
 @mixin binary-control($size: 1.125em) {
     display: inline-block;
-    margin-left: calc(#{$size} + 8px);
-    /* 1 */
-    text-indent: calc(-#{$size} - 8px);
-    /* 1 */
+    margin-left: calc(#{$size} + 8px); /* 1 */
+    text-indent: calc(-#{$size} - 8px); /* 1 */
     /* hide the real input */
     input {
         position: absolute;
